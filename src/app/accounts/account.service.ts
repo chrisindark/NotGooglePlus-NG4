@@ -5,9 +5,9 @@ import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
-export class UserService {
+export class AccountService {
   private SERVER_URL = 'http://127.0.0.1:8000';
-  private usersUrl = '/api/v1/users/';
+  private usersUrl = '/api/v1/accounts/';
 
   private headers = new Headers({
   });
