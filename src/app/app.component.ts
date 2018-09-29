@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
   template: `
-    <app-navbar></app-navbar>
     <router-outlet></router-outlet>
   `,
   styleUrls: ['app.component.css']
 })
 
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  constructor(
+    private router: Router
+  ) {
+    this.router.events.subscribe((val) => {
+      // console.log(val);
+    });
+  }
+
+  ngOnInit() {
+    // console.log('App component activated.');
+  }
+
+}

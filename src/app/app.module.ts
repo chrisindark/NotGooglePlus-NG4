@@ -1,39 +1,48 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 
-import { AppBootstrapModule } from './app-bootstrap.module';
 import { AppRoutingModule } from './app-routing.module';
+// import { TokenInterceptor } from './app.http-interceptor';
+import { SharedModule } from './shared/shared.module';
+
+import { AppHttpService } from './shared/app-http.service';
+
+// import { HomeModule } from './home';
+// import { PostsModule } from './posts';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './dashboard/navbar.component';
-import { HomeComponent } from './dashboard/home.component';
-import { FormComponent } from './dashboard/form.component';
-import { RegisterComponent } from './dashboard/register.component';
-import { LoginComponent } from './dashboard/login.component';
-import { PostComponent } from './post/post.component';
 
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    AppBootstrapModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    BsDatepickerModule.forRoot(),
+
     AppRoutingModule,
+    SharedModule.forRoot(),
+    // HomeModule,
+    // PostsModule
   ],
   declarations: [
     AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    RegisterComponent,
-    LoginComponent,
-    PostComponent
   ],
   providers: [
+    // {
+      // provide: HTTP_INTERCEPTORS,
+      // useClass: TokenInterceptor,
+      // multi: true,
+    // }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ],
+  exports: [
+
+  ]
 })
 
 export class AppModule {}

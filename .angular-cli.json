@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "sw.js"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -19,10 +20,10 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css",
-        "../node_modules/bootstrap-material-design/dist/css/ripples.min.css",
-        "styles.css"
+        "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "styles.css",
+        "unicorn-app-theme.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
