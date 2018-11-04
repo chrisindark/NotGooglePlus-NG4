@@ -1,48 +1,56 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BsDatepickerModule } from 'ngx-bootstrap';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BsDatepickerModule, BsDatepickerConfig } from 'ngx-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
-// import { TokenInterceptor } from './app.http-interceptor';
-import { SharedModule } from './shared/shared.module';
+import { TokenInterceptor, ErrorInterceptor } from './app.http-interceptor';
 
-import { AppHttpService } from './shared/app-http.service';
-
-// import { HomeModule } from './home';
-// import { PostsModule } from './posts';
+import { SharedModule } from './shared';
 
 import { AppComponent } from './app.component';
 
 
+export function getDatepickerConfig(): BsDatepickerConfig {
+  return Object.assign(new BsDatepickerConfig(), {
+    dateInputFormat: 'MM/DD/YYYY',
+    containerClass: 'theme-blue',
+  });
+}
+
 @NgModule({
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    NoopAnimationsModule,
     HttpClientModule,
     BsDatepickerModule.forRoot(),
 
-    AppRoutingModule,
     SharedModule.forRoot(),
-    // HomeModule,
-    // PostsModule
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
   ],
   providers: [
-    // {
-      // provide: HTTP_INTERCEPTORS,
-      // useClass: TokenInterceptor,
-      // multi: true,
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: BsDatepickerConfig,
+      useFactory: getDatepickerConfig
+    },
   ],
   bootstrap: [ AppComponent ],
-  exports: [
-
-  ]
+  entryComponents: [],
+  exports: []
 })
 
 export class AppModule {}

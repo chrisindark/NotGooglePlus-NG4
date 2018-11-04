@@ -31,8 +31,4 @@ import { NgModule } from '@angular/core';
 })
 
 
-export class AppMaterialModule {
-  // constructor(overlayContainer: OverlayContainer) {
-  //   overlayContainer.themeClass = 'unicorn-dark-theme';
-  // }
-}
+export class AppMaterialModule {}

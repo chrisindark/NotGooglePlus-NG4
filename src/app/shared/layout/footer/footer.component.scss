@@ -1,0 +1,21 @@
+.footer {
+  position: absolute;
+  padding-top: 20px;
+  width: 100%;
+}
+.footer-wrapper {
+  padding: 19.5px 0px;
+  background-color: #fff;
+}
+.footer-wrapper .row {
+  padding: 0 10%;
+}
+.footer-wrapper p {
+  color: #bfcdd4;
+  font-size: 12px;
+  margin-bottom: 0px;
+  margin-right: 10%;
+}
+.footer-wrapper p:last-of-type {
+  margin-right:0px;
+}

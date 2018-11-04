@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CollapseModule } from 'ngx-bootstrap';
+import { BsDatepickerModule, TooltipModule, ModalModule, CollapseModule } from 'ngx-bootstrap';
 
 
 @NgModule({
   imports: [
+    BsDatepickerModule,
+    TooltipModule,
+    ModalModule,
     CollapseModule,
   ],
   declarations: [],
   providers: [],
   exports: [
+    BsDatepickerModule,
+    TooltipModule,
+    ModalModule,
     CollapseModule,
   ]
 })
